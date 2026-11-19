@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v19.1.7
+    hooks:
+      - id: clang-format
+        types_or: [c++, c]
+
+  - repo: local
+    hooks:
+      - id: clang-tidy
+        name: clang-tidy
+        language: system
+        files: ^(src|include)/
+        pass_filenames: false
+        entry: >-
+          bash -c '
+          shopt -s nullglob;
+          sources=(src/*.cpp);
+          [ ${#sources[@]} -eq 0 ] && exit 0;
+          [ -f build/compile_commands.json ] || cmake -S . -B build > /dev/null || exit 1;
+          clang-tidy -p build --quiet "--warnings-as-errors=*" "${sources[@]}"'
