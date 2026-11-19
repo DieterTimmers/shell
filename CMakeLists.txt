@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(app LANGUAGES CXX)
+project(shell LANGUAGES CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
