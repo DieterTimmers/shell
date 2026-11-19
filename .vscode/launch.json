@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug app (gdb)",
+            "name": "Debug shell (gdb)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/app",
+            "program": "${workspaceFolder}/build/shell",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
