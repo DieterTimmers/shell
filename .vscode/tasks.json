@@ -24,6 +24,22 @@
             "args": ["--build", "${workspaceFolder}/build", "--target", "run"],
             "dependsOn": "CMake: Configure",
             "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Test: E2E Build",
+            "type": "shell",
+            "command": "mkdir -p build && c++ -std=c++20 -g -O0 -Wall -Wextra tests/e2e/test_commands.cpp -o build/test_commands",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Test: E2E",
+            "type": "shell",
+            "command": "./build/test_commands && echo PASS",
+            "options": { "cwd": "${workspaceFolder}" },
+            "dependsOn": "Test: E2E Build",
+            "problemMatcher": [],
+            "group": { "kind": "test", "isDefault": true }
         }
     ]
 }
