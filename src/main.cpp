@@ -38,14 +38,6 @@ int main() {
         std::cout << "> ";
         std::vector<std::string> command_line = read_command();
 
-        // std::cout << "> I got: ";
-
-        // for (const std::string& word : command_line) {
-        //     std::cout << word << ' ';
-        // }
-
-        std::cout << '\n';
-
         int pid = fork();
 
         if (pid == 0) {
@@ -56,8 +48,13 @@ int main() {
             }
             args.push_back(nullptr);
 
-            int result = execve(args[0], args.data(), nullptr);
+            execvp(args[0], args.data());
             char *error = strerror(errno);
+            int child_error = errno;
+            if (child_error == 2) {
+                std::cerr << "command not found" << '\n';
+                _exit(127);
+            }
             std::cerr << error << '\n';
             _exit(126);
         }
