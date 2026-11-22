@@ -4,4 +4,4 @@ End every session with one concrete next step here, so the next session starts w
 
 ## Next step
 
-- Write `src/main.cpp`.
+- Resolve commands via `PATH`, so `echo hello` works without typing `/usr/bin/echo`.

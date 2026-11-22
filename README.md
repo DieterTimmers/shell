@@ -15,9 +15,28 @@ cmake -S . -B build
 cmake --build build --target run
 ```
 
+### Run the shell in its own terminal window
+
+Start the shell directly in a new Alacritty window, without zsh in between:
+
+```sh
+cmake --build build
+alacritty -e ./build/shell
+```
+
+Alacritty connects `build/shell` straight to a new pty. The window closes when the shell exits.
+
 New `.cpp` files in `src/` are picked up automatically on the next build. Headers go in `include/`.
 
 VS Code tasks: `CMake: Configure`, `CMake: Build`, `Run`.
+
+## Reference
+
+List all system calls with a one-line description each:
+
+```sh
+man -k . -s 2
+```
 
 ## Requirements
 
